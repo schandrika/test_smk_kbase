@@ -15,10 +15,10 @@
             "optional": false,
             "advanced": false,
             "allow_multiple": false,
-            "default_values": [ "" ],
+            "default_values": [ "0.5" ],
             "field_type": "float",
             "text_options": {
-                "valid_ws_types": [ "float", "int"]
+                "validate_as": [ "float", "int"]
             }
         }
     ],
