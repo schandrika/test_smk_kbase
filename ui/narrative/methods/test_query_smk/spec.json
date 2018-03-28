@@ -16,7 +16,7 @@
             "advanced": false,
             "allow_multiple": false,
             "default_values": [ "0.5" ],
-            "field_type": "float",
+            "field_type": "text",
             "text_options": {
                 "validate_as": [ "float", "int"]
             }
