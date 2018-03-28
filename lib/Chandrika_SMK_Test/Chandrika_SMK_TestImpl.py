@@ -42,8 +42,8 @@ class Chandrika_SMK_Test:
         # self.db["metagenomics"].insert({"gene": 2, "abundance": 0.2})
         # self.db["metagenomics"].insert({"gene": 3, "abundance": 0.3})
 
-        client = MongoClient("mongodb://dev:smkdev@18.188.149.177:27017"
-                             "/smk_dev?authSource=smk_dev")
+        client = MongoClient("mongodb://dev:smkdev@18.188.149.177"
+                             "/smk_dev")
         self.db = client.get_database()
 
         #END_CONSTRUCTOR
