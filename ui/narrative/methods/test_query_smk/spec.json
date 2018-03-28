@@ -1,0 +1,57 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "chandrika"
+    ],
+    "contact": "",
+    "categories": ["active"],
+    "widgets": {
+        "input": null,
+        "output": null
+    },
+    "parameters": [ 
+        {
+            "id": "abundance_id",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "float",
+            "text_options": {
+                "valid_ws_types": [ "float", "int"]
+            }
+        }
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "Chandrika_SMK_Test",
+            "method": "query_smk",
+            "input_mapping": [
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_fn_param"
+                },
+                {
+                    "input_parameter": "abundance_id",
+                    "target_property": "abundance_fn_param"
+                }
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [0],
+                    "target_property": "output"
+                },
+                {
+                    "input_parameter": "abundance_id",
+                    "target_property": "input"
+                },
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_fn_param"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}

@@ -1,0 +1,41 @@
+#
+# define display information
+#
+name: Test Query SMK
+
+tooltip: |
+    Run test query against smk db
+
+screenshots: []
+
+icon: icon.png
+
+#
+# define a set of similar methods that might be useful to the user
+#
+#suggestions:
+#    apps:
+#        related:
+#            [ContigFilter, app2]
+#        next:
+#            [app3, app4]
+#    methods:
+#        related:
+#            [method1, method2]
+#        next:
+#            [method3, method4]
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    abundance_id :
+        ui-name : |
+            Pretty Display Name(abundance)
+        short-hint : |
+            Abundance of gene in metagenomics data
+        long-hint  : |
+            The first parameter that needs to be entered to drive the method. This might be the first of many.
+
+description : |
+    <p> Test description for test SMK query app

@@ -1,0 +1,74 @@
+# -*- coding: utf-8 -*-
+#BEGIN_HEADER
+import datetime
+from pymongo import MongoClient
+from bson import ObjectId
+#END_HEADER
+
+
+class Chandrika_SMK_Test:
+    '''
+    Module Name:
+    Chandrika_SMK_Test
+
+    Module Description:
+    A KBase module: Chandrika_SMK_Test
+    '''
+
+    ######## WARNING FOR GEVENT USERS ####### noqa
+    # Since asynchronous IO can lead to methods - even the same method -
+    # interrupting each other, you must be *very* careful when using global
+    # state. A method could easily clobber the state set by another while
+    # the latter method is running.
+    ######################################### noqa
+    VERSION = "0.0.1"
+    GIT_URL = ""
+    GIT_COMMIT_HASH = ""
+
+    #BEGIN_CLASS_HEADER
+    #END_CLASS_HEADER
+
+    # config contains contents of config file in a hash or None if it couldn't
+    # be found
+    def __init__(self, config):
+        #BEGIN_CONSTRUCTOR
+        client = MongoClient("mongodb://dev:smkdev@18.188.149.177:27017"
+                             "/smk_dev?authSource=smk_dev")
+        self.db = client.get_database()
+        #END_CONSTRUCTOR
+        pass
+
+
+    def query_smk(self, ctx, workspace_fn_param, abundance_fn_param):
+        """
+        :param workspace: instance of String
+        :param abundance_fn_param: instance of Double
+        :returns: instance of list of type "TestResult" (Insert your typespec
+           information here.) -> structure: parameter "gene" of String,
+           parameter "abundance" of Double
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN query_smk
+        cursor = self.db['metagenomics'].find(
+            {"abundance": {"$gte": abundance_fn_param}},
+            {"gene":1, "abundance":1})
+        output = list(cursor)
+
+        #END query_smk
+
+        # At some point might do deeper type checking...
+        if not isinstance(output, list):
+            raise ValueError('Method query_smk return value ' +
+                             'output is not type list as required.')
+        # return the results
+        return [output]
+    def status(self, ctx):
+        #BEGIN_STATUS
+        returnVal = {'state': "OK",
+                     'message': "",
+                     'version': self.VERSION,
+                     'git_url': self.GIT_URL,
+                     'git_commit_hash': self.GIT_COMMIT_HASH}
+        #END_STATUS
+        return [returnVal]
